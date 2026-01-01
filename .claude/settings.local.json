@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ln:*)",
+      "Bash(claude init:*)",
+      "Bash(pre-commit install:*)",
+      "Bash(brew install:*)"
+    ]
+  }
+}

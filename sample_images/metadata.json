@@ -1,0 +1,62 @@
+{
+  "kmp-0001.jpg": {
+    "keywords": ["Martin", "Haugaard", "Kline", "Jeanette", "Patricia"],
+    "format": "JPG",
+    "fileSize": 2636309,
+    "dimensions": { "width": 3912, "height": 2688 }
+  },
+  "kmp-0002.jpg": {
+    "keywords": ["Martin", "Jack"],
+    "format": "JPG",
+    "fileSize": 3756932,
+    "dimensions": { "width": 3896, "height": 2664 }
+  },
+  "kmp-0003.jpg": {
+    "keywords": ["Martin", "Jack"],
+    "format": "JPG",
+    "fileSize": 4438129,
+    "dimensions": { "width": 3870, "height": 2676 }
+  },
+  "kmp-0004.jpg": {
+    "keywords": ["Martin", "Jack"],
+    "format": "JPG",
+    "fileSize": 3228538,
+    "dimensions": { "width": 3856, "height": 2632 }
+  },
+  "kmp-0005.jpg": {
+    "keywords": ["Martin", "Jack"],
+    "format": "JPG",
+    "fileSize": 3053008,
+    "dimensions": { "width": 3904, "height": 2704 }
+  },
+  "kmp-0006.jpg": {
+    "keywords": ["Martin", "Pat", "racecar", "Gothenburg", "Car"],
+    "format": "JPG",
+    "fileSize": 359142,
+    "dimensions": { "width": 1020, "height": 692 }
+  },
+  "kmp-0007.jpg": {
+    "keywords": ["Car", "Eileen", "Martin"],
+    "format": "JPG",
+    "fileSize": 332023,
+    "dimensions": { "width": 900, "height": 724 }
+  },
+  "kmp-0008.jpg": {
+    "keywords": ["engaged", "Janeeta", "Bill", "Kline", "Gothenburg", "Martin"],
+    "format": "JPG",
+    "fileSize": 419473,
+    "dimensions": { "width": 908, "height": 896 }
+  },
+  "kmp-0009.jpg": {
+    "keywords": ["Car"],
+    "format": "JPG",
+    "fileSize": 392843,
+    "dimensions": { "width": 1076, "height": 792 }
+  },
+  "kmp-0010.jpg": {
+    "keywords": ["Martin", "Gothenburg", "Eileen"],
+    "format": "JPG",
+    "fileSize": 378903,
+    "dimensions": { "width": 712, "height": 1016 }
+  }
+}

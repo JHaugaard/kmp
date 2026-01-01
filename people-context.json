@@ -1,0 +1,30 @@
+{
+    "people": [
+        {
+            "name": "Jack",
+            "aka: "Jack Martin"
+            "description": "Slight build, wears glasses, elderly in nearly all photos, runner"
+            "relationships": "Husband of Catherine, Father of Pat Martin, grandfather of Janeeta"
+        },
+        {
+            "name": "Catherine",
+            "aka: "Catherine Martin, Catherine Walsh"
+            "description": "Stout build, elderly in nearly all photos"
+            "relationships": "wife of Jack, mother of Pat Martin, grandmother of Janeeta"
+        },
+        {
+            "name": "Pat",
+            "aka: "Jack Martin"
+            "description": "  "
+            "relationships": "Son of Jack and Catherine, father of Janeeta, grandfather of Patricia, Keith, Duane"
+        },
+        {
+            "name": "Jeanette",
+            "aka: "Jeanette Martin"
+            "description": "  "
+            "relationships": "Wife of Pat Martin, mother of Janeeta, grandmother of Patricia, Keith, Duane, sister of Marguerite, sister-in-law of Mac"
+        },
+    ],
+    ,
+    "context": "Start with these assumptions about people's identities if the visual evidence strongly supports it. Otherwise, describe generically. Jack, Catherine, Pat, Jeanette, Bill, Janeeta, Patricia, Keith, Duane, Clara, Boyd, Bruce, Bob are always keyworded. Martin, Kline, and Haugaard are surnames."
+}

@@ -1,0 +1,64 @@
+:root {
+    /* Palette */
+    --bg-primary: hsl(220, 20%, 10%);
+    --bg-secondary: hsl(220, 15%, 15%);
+    --accent-primary: hsl(210, 100%, 60%);
+    --accent-secondary: hsl(280, 80%, 65%);
+    --text-primary: hsl(0, 0%, 95%);
+    --text-secondary: hsl(220, 10%, 70%);
+    --border-subtle: hsla(0, 0%, 100%, 0.1);
+
+    /* Glassmorphism */
+    --glass-bg: hsla(220, 15%, 20%, 0.7);
+    --glass-border: hsla(0, 0%, 100%, 0.1);
+    --glass-blur: blur(12px);
+
+    /* Typography */
+    --font-main: 'Outfit', 'Inter', system-ui, sans-serif;
+    --font-display: 'Outfit', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.premium-gradient {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Micro-animations */
+.hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
