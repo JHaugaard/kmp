@@ -4,28 +4,17 @@ services:
     container_name: kmp-app
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     environment:
       - NODE_ENV=production
       - PUBLIC_POCKETBASE_URL=${PUBLIC_POCKETBASE_URL}
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
     networks:
-      - caddy-net
-
-  pocketbase:
-    image: ghcr.io/muchobien/pocketbase:latest
-    container_name: kmp-pocketbase
-    restart: unless-stopped
-    volumes:
-      - pb_data:/pb_data
-    ports:
-      - "8090:8090"
-    networks:
-      - caddy-net
-
-volumes:
-  pb_data:
+      - jhh-net
+    mem_limit: 512m
+    mem_reservation: 256m
+    cpus: 1.0
 
 networks:
-  caddy-net:
+  jhh-net:
     external: true
