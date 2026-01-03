@@ -1,0 +1,78 @@
+{
+  "document_type": "deployment-log",
+  "version": "1.0",
+  "created": "2026-01-03",
+  "project": "kmp",
+
+  "rationale": "First production deployment of KMP (Kline-Martin Photos) to vps2 with Docker, Caddy reverse proxy, and connection to existing PocketBase on vps8.",
+
+  "latest_deployment": {
+    "date": "2026-01-03 10:43",
+    "target": "vps2",
+    "branch": "main",
+    "commit": "5e7b34d0d148a8df742025e60c64dcf106f1893d",
+    "status": "SUCCESS",
+    "deployed_by": "john"
+  },
+
+  "deployment_target": {
+    "type": "vps-docker",
+    "host": "srv993275.hstgr.cloud (vps2)",
+    "ip": "31.97.131.163",
+    "url": "https://kline-martin-photos.com",
+    "api_url": null
+  },
+
+  "pre_deployment_checks": {
+    "code_committed": true,
+    "build_passed": true,
+    "tests_passed": null,
+    "environment_configured": true
+  },
+
+  "post_deployment_verification": {
+    "application_accessible": true,
+    "no_errors_in_logs": true,
+    "core_functionality_working": true,
+    "storage_connected": true
+  },
+
+  "storage": {
+    "type": "backblaze-b2",
+    "bucket_name": "kline-martin-photos",
+    "endpoint": "s3.us-west-004.backblazeb2.com",
+    "env_vars": [],
+    "notes": "Images pre-uploaded to B2; URLs stored in PocketBase"
+  },
+
+  "backend": {
+    "type": "pocketbase",
+    "location": "vps8 (homelab)",
+    "url": "https://pocketbase.haugaard.dev",
+    "notes": "Shared PocketBase instance; KMP collections already configured"
+  },
+
+  "runbook": {
+    "deploy_command": "ssh vps2 'cd ~/vps-setup/apps/kmp && git pull && docker compose up -d --build'",
+    "rollback_command": "ssh vps2 'cd ~/vps-setup/apps/kmp && git checkout <previous-commit> && docker compose up -d --build'",
+    "log_command": "ssh vps2 'docker logs kmp-app --tail=100'",
+    "restart_command": "ssh vps2 'cd ~/vps-setup/apps/kmp && docker compose restart'"
+  },
+
+  "environment_variables": [
+    {"name": "PUBLIC_POCKETBASE_URL", "description": "PocketBase API endpoint", "location": "vps2:~/vps-setup/apps/kmp/.env", "value": "https://pocketbase.haugaard.dev"},
+    {"name": "GOOGLE_API_KEY", "description": "Gemini API for semantic search", "location": "vps2:~/vps-setup/apps/kmp/.env", "value": "NEEDS_CONFIGURATION"}
+  ],
+
+  "infrastructure": {
+    "container_name": "kmp-app",
+    "docker_network": "jhh-net",
+    "port_binding": "127.0.0.1:3000:3000",
+    "reverse_proxy": "caddy",
+    "ssl": "Let's Encrypt (automatic)"
+  },
+
+  "deployment_history": [
+    {"date": "2026-01-03", "commit": "5e7b34d", "status": "SUCCESS", "notes": "Initial deployment"}
+  ]
+}
