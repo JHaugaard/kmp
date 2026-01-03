@@ -1,7 +1,7 @@
 # Session Context
 
 ## Current Focus
-Ready for deployment
+Deployed and live at https://kline-martin-photos.com
 
 ## MCP Servers Added This Session
 | Server | Tools | Status |
@@ -12,20 +12,34 @@ Ready for deployment
 - Naming: `kline-martin-photos` for site, B2 bucket, all external-facing names
 - PocketBase 0.23+: use `_superusers` collection, `fields` not `schema`
 - Backblaze B2 for image storage (S3-compatible)
-- Homelab VPS (vps2.haugaard.dev) for hosting
-- Multiple reviewer tracking (who + when)
+- Deployment target: vps2 (srv993275.hstgr.cloud)
+- OTP-based passwordless auth for family whitelist
 
 ## Implementation Status
 - B2 uploads complete: 1063 originals + 1063 thumbnails
 - PocketBase collections created: photos, people, reviews, user roles
 - Testing infrastructure: Vitest configured, 19 tests passing
+- **Deployed to vps2**: Docker container `kmp-app` on `jhh-net`
+- **Auth system**: OTP passwordless login via PocketBase
 
-## Pending Steps
-1. Deploy to VPS
+## Deployment Details
+- URL: https://kline-martin-photos.com
+- Host: vps2 (srv993275.hstgr.cloud / 31.97.131.163)
+- Backend: PocketBase on vps8 (pocketbase.haugaard.dev)
+- Reverse proxy: Caddy with automatic HTTPS
+- SMTP: Resend (noreply@haugaard.dev)
 
-## Pre-Deployment Reminder
-- Dockerfile: change runner stage to use `npm ci --omit=dev` instead of copying all node_modules (smaller image)
-- Use `docker compose --env-file .env.local up` to load env vars
+## Runbook
+```bash
+# Deploy
+ssh vps2 'cd ~/vps-setup/apps/kmp && git pull && docker compose up -d --build'
+
+# Logs
+ssh vps2 'docker logs kmp-app --tail=100'
+
+# Restart
+ssh vps2 'cd ~/vps-setup/apps/kmp && docker compose restart'
+```
 
 ## Session Status
 Completed: 2026-01-03
@@ -33,5 +47,6 @@ No MCP servers to clean up
 Tool count: 6 (clean slate)
 
 ## Notes
-- Multi-model review completed (Gemini 2.5 Pro + GPT-4o): no dead code found, 6 fixes applied
-- Testing is scaffolding only - meaningful tests to be added post-deployment
+- Switched from `$env/static/*` to `$env/dynamic/*` for Docker build compatibility
+- OTP email template configured in PocketBase: Collections → users → Options
+- SMTP requires TLS (not StartTLS) for port 465

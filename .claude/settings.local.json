@@ -18,7 +18,18 @@
       "Bash(echo \"First 10 chars: $GEMINI_API_KEY:0:10\")",
       "Bash(npm run build:*)",
       "Bash(npx tsx:*)",
-      "Bash(npm run test:run:*)"
+      "Bash(npm run test:run:*)",
+      "Bash(ssh:*)",
+      "Bash(ssh-keyscan:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nConfigure for vps2 deployment\n\n- Update docker-compose.yml: use jhh-net, bind to 127.0.0.1, add resource limits\n- Remove separate pocketbase service \\(using existing instance on vps8\\)\n- Add .env.production template for vps2\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nConfigure for vps2 deployment\n\n- Update docker-compose.yml: use jhh-net, bind to 127.0.0.1, add resource limits\n- Remove separate pocketbase service \\(using existing instance on vps8\\)\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nFix: use dynamic env for GOOGLE_API_KEY\n\nSwitch from $env/static/private to $env/dynamic/private for runtime\nenvironment variable access. Static env requires vars at build time,\nwhich breaks Docker builds.\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nFix: use dynamic env for PUBLIC_POCKETBASE_URL\n\nSwitch from $env/static/public to $env/dynamic/public for runtime\nenvironment variable access during Docker builds.\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd deployment log for vps2\n\nDocuments first production deployment configuration and runbook.\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git restore:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: switch to OTP auth for passwordless login\n\n- Replace requestVerification with requestOTP for true magic link auth\n- Add /auth/otp callback route to handle email link clicks\n- Update login UI to show error for invalid/expired links\n- User clicks link in email -> automatically logged in -> redirected to gallery\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
