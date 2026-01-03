@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
 	let { form } = $props();
 
 	let loading = $state(false);
+
+	// Check for error from OTP callback redirect
+	const urlError = $derived($page.url.searchParams.get('error'));
 </script>
 
 <div class="login-container">
@@ -10,14 +14,20 @@
 		<h1 class="premium-gradient">Family Archive Access</h1>
 		<p class="subtitle">Enter your email to receive a secure access link.</p>
 
+		{#if urlError === 'invalid_link'}
+			<div class="error-message">
+				<p>That link has expired or is invalid. Please request a new one.</p>
+			</div>
+		{/if}
+
 		{#if form?.success}
 			<div class="success-message">
-				<p>✨ Check your inbox! A secure link has been sent to your email.</p>
+				<p>Check your inbox! A secure login link has been sent to {form.email}.</p>
 			</div>
 		{:else}
-			<form 
-				method="POST" 
-				action="?/requestMagicLink" 
+			<form
+				method="POST"
+				action="?/requestMagicLink"
 				use:enhance={() => {
 					loading = true;
 					return async ({ update }) => {
@@ -27,12 +37,12 @@
 				}}
 			>
 				<div class="input-group">
-					<input 
-						type="email" 
-						name="email" 
-						id="email" 
+					<input
+						type="email"
+						name="email"
+						id="email"
 						placeholder="email@example.com"
-						required 
+						required
 					/>
 				</div>
 
@@ -127,5 +137,14 @@
 		color: #ef4444;
 		font-size: 0.85rem;
 		margin-bottom: 1rem;
+	}
+
+	.error-message {
+		padding: 1.5rem;
+		background: rgba(239, 68, 68, 0.1);
+		border: 1px solid rgba(239, 68, 68, 0.3);
+		border-radius: 12px;
+		color: #ef4444;
+		margin-bottom: 1.5rem;
 	}
 </style>
