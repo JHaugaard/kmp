@@ -1,4 +1,5 @@
-import 'dotenv/config';
+import { config } from 'dotenv';
+config({ path: '.env.local' });
 import { S3Client, PutObjectCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
 import sharp from 'sharp';
 import { readdir, readFile, writeFile } from 'fs/promises';
@@ -28,11 +29,14 @@ async function main() {
 
 	const s3 = new S3Client({
 		endpoint: `https://${endpoint}`,
-		region: 'us-west-004',
+		region: 'auto',
 		credentials: {
 			accessKeyId,
 			secretAccessKey
-		}
+		},
+		// B2 doesn't support AWS SDK v3 checksums
+		requestChecksumCalculation: 'WHEN_REQUIRED',
+		responseChecksumValidation: 'WHEN_REQUIRED'
 	});
 
 	console.log(`Reading images from: ${SOURCE_DIR}`);
@@ -84,6 +88,7 @@ async function main() {
 					Bucket: bucket,
 					Key: originalKey,
 					Body: imageBuffer,
+					ContentLength: imageBuffer.length,
 					ContentType: getContentType(filename)
 				})
 			);
@@ -94,6 +99,7 @@ async function main() {
 					Bucket: bucket,
 					Key: thumbKey,
 					Body: thumbBuffer,
+					ContentLength: thumbBuffer.length,
 					ContentType: 'image/jpeg'
 				})
 			);

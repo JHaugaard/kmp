@@ -1,4 +1,5 @@
-import 'dotenv/config';
+import { config } from 'dotenv';
+config({ path: '.env.local' });
 import PocketBase from 'pocketbase';
 
 async function setup() {
@@ -15,8 +16,9 @@ async function setup() {
 	const pb = new PocketBase(url);
 
 	try {
-		await pb.admins.authWithPassword(email, password);
-		console.log('Admin login successful.\n');
+		// PocketBase 0.23+ uses _superusers collection instead of admins
+		await pb.collection('_superusers').authWithPassword(email, password);
+		console.log('Superuser login successful.\n');
 
 		const collections = await pb.collections.getFullList();
 		const getCollection = (name: string) => collections.find((c) => c.name === name);
@@ -25,7 +27,9 @@ async function setup() {
 		const photosCollection = getCollection('photos');
 		if (photosCollection) {
 			console.log('Updating "photos" collection with new fields...');
-			const existingFields = photosCollection.schema.map((f: { name: string }) => f.name);
+			// PocketBase 0.23+ uses 'fields' instead of 'schema'
+			const collectionFields = photosCollection.fields || photosCollection.schema || [];
+			const existingFields = collectionFields.map((f: { name: string }) => f.name);
 
 			const newFields = [];
 			if (!existingFields.includes('thumbnail_url')) {
@@ -35,14 +39,13 @@ async function setup() {
 				newFields.push({
 					name: 'needs_reassessment',
 					type: 'bool',
-					required: false,
-					options: { default: false }
+					required: false
 				});
 			}
 
 			if (newFields.length > 0) {
 				await pb.collections.update(photosCollection.id, {
-					schema: [...photosCollection.schema, ...newFields]
+					fields: [...collectionFields, ...newFields]
 				});
 				console.log(`  Added fields: ${newFields.map((f) => f.name).join(', ')}`);
 			} else {
@@ -53,16 +56,11 @@ async function setup() {
 			await pb.collections.create({
 				name: 'photos',
 				type: 'base',
-				schema: [
+				fields: [
 					{ name: 'filename', type: 'text', required: true },
-					{ name: 'keywords', type: 'json', required: false, options: { maxSize: 1024 * 1024 } },
+					{ name: 'keywords', type: 'json', required: false },
 					{ name: 'assessment', type: 'text', required: false },
-					{
-						name: 'embedding',
-						type: 'json',
-						required: false,
-						options: { maxSize: 2 * 1024 * 1024 }
-					},
+					{ name: 'embedding', type: 'json', required: false },
 					{ name: 'image_url', type: 'url', required: false },
 					{ name: 'thumbnail_url', type: 'url', required: false },
 					{ name: 'needs_reassessment', type: 'bool', required: false }
@@ -79,19 +77,19 @@ async function setup() {
 		// --- Users Collection (add role field) ---
 		const usersCollection = getCollection('users');
 		if (usersCollection) {
-			const existingFields = usersCollection.schema.map((f: { name: string }) => f.name);
+			// PocketBase 0.23+ uses 'fields' instead of 'schema'
+			const collectionFields = usersCollection.fields || usersCollection.schema || [];
+			const existingFields = collectionFields.map((f: { name: string }) => f.name);
 			if (!existingFields.includes('role')) {
 				console.log('\nAdding "role" field to users collection...');
 				await pb.collections.update(usersCollection.id, {
-					schema: [
-						...usersCollection.schema,
+					fields: [
+						...collectionFields,
 						{
 							name: 'role',
 							type: 'select',
 							required: false,
-							options: {
-								values: ['user', 'reviewer', 'admin']
-							}
+							values: ['user', 'reviewer', 'admin']
 						}
 					]
 				});
@@ -107,7 +105,7 @@ async function setup() {
 			await pb.collections.create({
 				name: 'people',
 				type: 'base',
-				schema: [
+				fields: [
 					{ name: 'name', type: 'text', required: true },
 					{ name: 'aliases', type: 'json', required: false },
 					{ name: 'surname', type: 'text', required: false },
@@ -146,28 +144,24 @@ async function setup() {
 			await pb.collections.create({
 				name: 'reviews',
 				type: 'base',
-				schema: [
+				fields: [
 					{
 						name: 'photo',
 						type: 'relation',
 						required: true,
-						options: {
-							collectionId: photosId,
-							cascadeDelete: true,
-							maxSelect: 1
-						}
+						collectionId: photosId,
+						cascadeDelete: true,
+						maxSelect: 1
 					},
 					{
 						name: 'reviewer',
 						type: 'relation',
 						required: true,
-						options: {
-							collectionId: usersId,
-							cascadeDelete: false,
-							maxSelect: 1
-						}
+						collectionId: usersId,
+						cascadeDelete: false,
+						maxSelect: 1
 					},
-					{ name: 'reviewed_at', type: 'autodate', options: { onCreate: true, onUpdate: true } },
+					{ name: 'reviewed_at', type: 'autodate', onCreate: true, onUpdate: true },
 					{ name: 'notes', type: 'text', required: false },
 					{ name: 'keywords_changed', type: 'bool', required: false },
 					{ name: 'assessment_changed', type: 'bool', required: false }
