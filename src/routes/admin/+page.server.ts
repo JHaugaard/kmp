@@ -3,6 +3,9 @@ import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async ({ locals }) => {
 	const pb = locals.pb;
 
+	// Disable auto-cancellation for parallel requests
+	pb.autoCancellation(false);
+
 	const [photosCount, reviewedPhotos, needsReassessment, peopleCount, recentReviews] =
 		await Promise.all([
 			pb.collection('photos').getList(1, 1).then((r) => r.totalItems),

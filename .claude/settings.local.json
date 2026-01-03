@@ -29,7 +29,8 @@
       "Bash(git commit -m \"$\\(cat <<''EOF''\nFix: use dynamic env for PUBLIC_POCKETBASE_URL\n\nSwitch from $env/static/public to $env/dynamic/public for runtime\nenvironment variable access during Docker builds.\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd deployment log for vps2\n\nDocuments first production deployment configuration and runbook.\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git restore:*)",
-      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: switch to OTP auth for passwordless login\n\n- Replace requestVerification with requestOTP for true magic link auth\n- Add /auth/otp callback route to handle email link clicks\n- Update login UI to show error for invalid/expired links\n- User clicks link in email -> automatically logged in -> redirected to gallery\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: switch to OTP auth for passwordless login\n\n- Replace requestVerification with requestOTP for true magic link auth\n- Add /auth/otp callback route to handle email link clicks\n- Update login UI to show error for invalid/expired links\n- User clicks link in email -> automatically logged in -> redirected to gallery\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)"
     ]
   }
 }
