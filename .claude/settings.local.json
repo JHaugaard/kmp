@@ -10,7 +10,12 @@
       "Bash(xargs ls:*)",
       "Bash(ls:*)",
       "Bash(npm install:*)",
-      "Bash(npm run check:*)"
+      "Bash(npm run check:*)",
+      "Bash(source:*)",
+      "Bash(tree:*)",
+      "Bash(curl:*)",
+      "Bash(echo:*)",
+      "Bash(echo \"First 10 chars: $GEMINI_API_KEY:0:10\")"
     ]
   }
 }

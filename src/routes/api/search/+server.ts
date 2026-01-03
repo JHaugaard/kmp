@@ -3,6 +3,10 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { GOOGLE_API_KEY } from '$env/static/private';
 import type { RequestHandler } from './$types';
 
+// Initialize once at module level
+const genAI = new GoogleGenerativeAI(GOOGLE_API_KEY);
+const embedModel = genAI.getGenerativeModel({ model: 'gemini-embedding-001' });
+
 export const POST: RequestHandler = async ({ request, locals }) => {
     const { query } = await request.json();
 
@@ -12,9 +16,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 
     try {
         // 1. Embed the search query
-        const genAI = new GoogleGenerativeAI(GOOGLE_API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-embedding-001" });
-        const result = await model.embedContent({
+        const result = await embedModel.embedContent({
             content: { role: 'user', parts: [{ text: query }] },
             outputDimensionality: 768
         } as any);

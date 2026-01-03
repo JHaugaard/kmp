@@ -15,9 +15,10 @@ async function migrate() {
     const email = process.env.PB_ADMIN_EMAIL;
     const password = process.env.PB_ADMIN_PASSWORD;
     const apiKey = process.env.GOOGLE_API_KEY;
+    const imageBaseUrl = process.env.IMAGE_BASE_URL;
 
-    if (!url || !email || !password || !apiKey) {
-        console.error('Missing credentials in .env');
+    if (!url || !email || !password || !apiKey || !imageBaseUrl) {
+        console.error('Missing credentials in .env. Required: PUBLIC_POCKETBASE_URL, PB_ADMIN_EMAIL, PB_ADMIN_PASSWORD, GOOGLE_API_KEY, IMAGE_BASE_URL');
         process.exit(1);
     }
 
@@ -125,7 +126,7 @@ async function migrate() {
                     keywords: keywords,
                     assessment: assessment.trim(),
                     embedding: embedding,
-                    image_url: `https://kmp-assets-dev.local/${filename}`
+                    image_url: `${imageBaseUrl}/${filename}`
                 };
 
                 if (existing) {

@@ -9,10 +9,6 @@ services:
       - NODE_ENV=production
       - PUBLIC_POCKETBASE_URL=${PUBLIC_POCKETBASE_URL}
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
-      - B2_BUCKET=${B2_BUCKET}
-      - B2_ENDPOINT=${B2_ENDPOINT}
-      - B2_ACCESS_KEY_ID=${B2_ACCESS_KEY_ID}
-      - B2_SECRET_ACCESS_KEY=${B2_SECRET_ACCESS_KEY}
     networks:
       - caddy-net
 

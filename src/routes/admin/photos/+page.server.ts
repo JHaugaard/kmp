@@ -10,8 +10,26 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 
 	let filterQuery = '';
 	if (filter === 'unreviewed') {
-		// Photos with no reviews - need to check via subquery or separate logic
-		filterQuery = '';
+		// Get IDs of all reviewed photos, then exclude them
+		const reviewedPhotos = await pb.collection('reviews').getFullList({
+			fields: 'photo'
+		});
+		const reviewedIds = [...new Set(reviewedPhotos.map((r) => r.photo))];
+		if (reviewedIds.length > 0) {
+			filterQuery = reviewedIds.map((id) => `id != "${id}"`).join(' && ');
+		}
+	} else if (filter === 'reviewed') {
+		// Get IDs of reviewed photos, then include only them
+		const reviewedPhotos = await pb.collection('reviews').getFullList({
+			fields: 'photo'
+		});
+		const reviewedIds = [...new Set(reviewedPhotos.map((r) => r.photo))];
+		if (reviewedIds.length > 0) {
+			filterQuery = reviewedIds.map((id) => `id = "${id}"`).join(' || ');
+		} else {
+			// No reviews exist, return empty result
+			filterQuery = 'id = ""';
+		}
 	} else if (filter === 'needs_reassessment') {
 		filterQuery = 'needs_reassessment = true';
 	}
