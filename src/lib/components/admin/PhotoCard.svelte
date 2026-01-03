@@ -53,12 +53,12 @@
 
 <style>
 	.photo-card {
-		background: var(--glass-bg);
-		border: 2px solid transparent;
-		border-radius: 12px;
+		background: var(--bg-primary);
+		border: 1px solid var(--border-default);
+		border-radius: var(--radius-md);
 		overflow: hidden;
 		cursor: pointer;
-		transition: all 0.2s ease;
+		transition: border-color 0.1s ease, box-shadow 0.1s ease;
 		text-align: left;
 		padding: 0;
 		width: 100%;
@@ -66,12 +66,11 @@
 
 	.photo-card:hover {
 		border-color: var(--accent-primary);
-		transform: translateY(-2px);
 	}
 
 	.photo-card.selected {
 		border-color: var(--accent-primary);
-		box-shadow: 0 0 0 2px hsla(210, 100%, 60%, 0.3);
+		box-shadow: 0 0 0 2px rgba(35, 131, 226, 0.2);
 	}
 
 	.thumbnail {
@@ -91,37 +90,38 @@
 		align-items: center;
 		justify-content: center;
 		height: 100%;
-		color: var(--text-secondary);
-		font-size: 0.75rem;
+		color: var(--text-tertiary);
+		font-size: 12px;
 	}
 
 	.badge {
 		position: absolute;
-		top: 0.5rem;
-		right: 0.5rem;
-		padding: 0.25rem 0.5rem;
-		border-radius: 4px;
-		font-size: 0.625rem;
+		top: var(--space-sm);
+		right: var(--space-sm);
+		padding: 2px 6px;
+		border-radius: var(--radius-sm);
+		font-size: 10px;
 		font-weight: 600;
 		text-transform: uppercase;
 	}
 
 	.badge.reviewed {
-		background: hsl(140, 60%, 40%);
+		background: #dbeddb;
+		color: #1e7b1e;
 	}
 
 	.badge.reassess {
-		background: hsl(40, 90%, 50%);
-		color: hsl(0, 0%, 10%);
+		background: #fdecc8;
+		color: #9a6700;
 	}
 
 	.info {
-		padding: 0.75rem;
+		padding: var(--space-sm);
 	}
 
 	.filename {
 		display: block;
-		font-size: 0.75rem;
+		font-size: 12px;
 		font-weight: 500;
 		white-space: nowrap;
 		overflow: hidden;
@@ -131,21 +131,22 @@
 
 	.meta {
 		display: flex;
-		gap: 0.5rem;
-		margin-top: 0.25rem;
-		font-size: 0.625rem;
+		gap: var(--space-xs);
+		margin-top: var(--space-xs);
+		font-size: 10px;
 		color: var(--text-secondary);
 	}
 
 	.keywords {
-		background: hsla(0, 0%, 100%, 0.1);
-		padding: 0.125rem 0.375rem;
-		border-radius: 4px;
+		background: var(--bg-secondary);
+		padding: 1px 4px;
+		border-radius: var(--radius-sm);
 	}
 
 	.reviewer {
-		background: hsla(210, 100%, 60%, 0.2);
-		padding: 0.125rem 0.375rem;
-		border-radius: 4px;
+		background: #e8f4fd;
+		color: var(--accent-primary);
+		padding: 1px 4px;
+		border-radius: var(--radius-sm);
 	}
 </style>

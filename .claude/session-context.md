@@ -42,9 +42,10 @@ ssh vps2 'cd ~/vps-setup/apps/kmp && docker compose restart'
 ```
 
 ## Session Status
-Completed: 2026-01-03
-No MCP servers to clean up
-Tool count: 6 (clean slate)
+Started: 2026-01-03
+Focus: App refinement
+No MCP servers
+Tool count: 6
 
 ## Notes
 - Switched from `$env/static/*` to `$env/dynamic/*` for Docker build compatibility

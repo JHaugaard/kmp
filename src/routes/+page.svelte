@@ -1,39 +1,40 @@
-<section class="hero">
-	<div class="glass-card welcome-card hover-lift">
-		<h1 class="premium-gradient">Kline-Martin Photos</h1>
-		<p>Initializing the private family archive interface...</p>
-		<div class="status-badge">Theme Ready</div>
+<section class="landing">
+	<div class="content">
+		<h1>Kline-Martin Photos</h1>
+		<p class="subtitle">A private archive for our family memories</p>
+		<div class="actions">
+			<a href="/login" class="btn btn-primary">Sign in</a>
+			<a href="/admin" class="btn btn-secondary">Admin</a>
+		</div>
 	</div>
 </section>
 
 <style>
-	.hero {
+	.landing {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 100vh;
-		padding: 20px;
+		min-height: 100vh;
+		padding: var(--space-lg);
 	}
 
-	.welcome-card {
-		padding: 3rem;
-		max-width: 500px;
+	.content {
 		text-align: center;
+		max-width: 400px;
 	}
 
-	.status-badge {
-		display: inline-block;
-		margin-top: 1.5rem;
-		padding: 0.5rem 1rem;
-		background: var(--accent-primary);
-		color: white;
-		border-radius: 99px;
-		font-size: 0.8rem;
-		font-weight: 600;
+	h1 {
+		margin-bottom: var(--space-sm);
 	}
 
-	p {
+	.subtitle {
 		color: var(--text-secondary);
-		margin-top: 1rem;
+		margin-bottom: var(--space-lg);
+	}
+
+	.actions {
+		display: flex;
+		gap: var(--space-sm);
+		justify-content: center;
 	}
 </style>

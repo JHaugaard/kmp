@@ -52,11 +52,14 @@
 </script>
 
 <div class="dashboard">
-	<h1>Dashboard</h1>
+	<header class="page-header">
+		<h1>Dashboard</h1>
+		<a href="/" class="back-link">Back to home</a>
+	</header>
 
 	<div class="stats-grid">
 		{#each stats as stat}
-			<a href={stat.href} class="stat-card glass-card hover-lift">
+			<a href={stat.href} class="stat-card card">
 				<span class="stat-value">{stat.value}</span>
 				<span class="stat-label">{stat.label}</span>
 			</a>
@@ -70,7 +73,7 @@
 		{:else}
 			<ul class="review-list">
 				{#each data.recentReviews as review}
-					<li class="review-item glass-card">
+					<li class="review-item card">
 						<span class="review-photo">{review.expand?.photo?.filename || 'Unknown'}</span>
 						<span class="review-meta">
 							by {review.expand?.reviewer?.email || 'Unknown'}
@@ -84,46 +87,61 @@
 </div>
 
 <style>
-	.dashboard h1 {
-		margin: 0 0 2rem;
+	.dashboard {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: var(--space-lg);
+	}
+
+	.page-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: var(--space-lg);
+	}
+
+	.back-link {
+		font-size: 14px;
+		color: var(--text-secondary);
 	}
 
 	.stats-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-		gap: 1rem;
-		margin-bottom: 3rem;
+		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		gap: var(--space-md);
+		margin-bottom: var(--space-xl);
 	}
 
 	.stat-card {
-		padding: 1.5rem;
 		text-decoration: none;
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: var(--space-xs);
+		transition: background-color 0.1s ease;
+	}
+
+	.stat-card:hover {
+		background-color: var(--bg-secondary);
+		text-decoration: none;
 	}
 
 	.stat-value {
-		font-size: 2.5rem;
-		font-weight: 700;
-		color: var(--accent-primary);
+		font-size: 2rem;
+		font-weight: 600;
+		color: var(--text-primary);
 	}
 
 	.stat-label {
-		font-size: 0.875rem;
+		font-size: 13px;
 		color: var(--text-secondary);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
 	}
 
 	.recent-activity h2 {
-		margin: 0 0 1rem;
-		font-size: 1.25rem;
+		margin-bottom: var(--space-md);
 	}
 
 	.empty-state {
-		color: var(--text-secondary);
-		font-style: italic;
+		color: var(--text-tertiary);
 	}
 
 	.review-list {
@@ -132,11 +150,10 @@
 		margin: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: var(--space-sm);
 	}
 
 	.review-item {
-		padding: 1rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -147,13 +164,9 @@
 	}
 
 	.review-meta {
-		font-size: 0.875rem;
+		font-size: 13px;
 		color: var(--text-secondary);
 		display: flex;
-		gap: 0.5rem;
-	}
-
-	.review-meta time {
-		color: var(--text-secondary);
+		gap: var(--space-sm);
 	}
 </style>

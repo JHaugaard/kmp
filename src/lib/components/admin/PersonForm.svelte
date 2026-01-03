@@ -59,7 +59,7 @@
 </script>
 
 <div class="modal-overlay" onclick={onclose} role="presentation">
-	<div class="modal glass-card" onclick={(e) => e.stopPropagation()} role="dialog">
+	<div class="modal" onclick={(e) => e.stopPropagation()} role="dialog">
 		<div class="modal-header">
 			<h2>{person ? 'Edit Person' : 'Add Person'}</h2>
 			<button type="button" class="close-btn" onclick={onclose}>×</button>
@@ -170,12 +170,12 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background: hsla(0, 0%, 0%, 0.6);
+		background: rgba(0, 0, 0, 0.4);
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		z-index: 1000;
-		padding: 2rem;
+		padding: var(--space-lg);
 	}
 
 	.modal {
@@ -183,33 +183,34 @@
 		max-width: 600px;
 		max-height: 90vh;
 		overflow-y: auto;
-		padding: 0;
+		background: var(--bg-primary);
+		border: 1px solid var(--border-default);
+		border-radius: var(--radius-md);
 	}
 
 	.modal-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1.25rem 1.5rem;
-		border-bottom: 1px solid var(--border-subtle);
+		padding: var(--space-md) var(--space-lg);
+		border-bottom: 1px solid var(--border-default);
 		position: sticky;
 		top: 0;
-		background: var(--glass-bg);
-		backdrop-filter: var(--glass-blur);
+		background: var(--bg-primary);
 	}
 
 	.modal-header h2 {
 		margin: 0;
-		font-size: 1.25rem;
+		font-size: 16px;
 	}
 
 	.close-btn {
 		background: none;
 		border: none;
-		color: var(--text-secondary);
+		color: var(--text-tertiary);
 		font-size: 1.5rem;
 		cursor: pointer;
-		padding: 0.25rem;
+		padding: 4px;
 		line-height: 1;
 	}
 
@@ -218,19 +219,19 @@
 	}
 
 	form {
-		padding: 1.5rem;
+		padding: var(--space-lg);
 	}
 
 	.form-grid {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: 1rem;
+		gap: var(--space-md);
 	}
 
 	.field {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: var(--space-sm);
 	}
 
 	.field.full-width {
@@ -239,32 +240,32 @@
 
 	.section-header {
 		grid-column: 1 / -1;
-		margin-top: 0.5rem;
+		margin-top: var(--space-sm);
 	}
 
 	.section-header h3 {
 		margin: 0;
-		font-size: 0.875rem;
-		color: var(--text-secondary);
+		font-size: 11px;
+		color: var(--text-tertiary);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 	}
 
 	label {
-		font-size: 0.875rem;
+		font-size: 13px;
 		color: var(--text-secondary);
 	}
 
 	input,
 	select,
 	textarea {
-		padding: 0.75rem;
-		background: hsla(220, 15%, 15%, 0.5);
-		border: 1px solid var(--glass-border);
-		border-radius: 8px;
+		padding: var(--space-sm) var(--space-md);
+		background: var(--bg-primary);
+		border: 1px solid var(--border-default);
+		border-radius: var(--radius-sm);
 		color: var(--text-primary);
 		font-family: inherit;
-		font-size: 0.875rem;
+		font-size: 14px;
 	}
 
 	input:focus,
@@ -284,21 +285,21 @@
 
 	.form-actions {
 		display: flex;
-		gap: 1rem;
-		margin-top: 1.5rem;
-		padding-top: 1.5rem;
-		border-top: 1px solid var(--border-subtle);
+		gap: var(--space-sm);
+		margin-top: var(--space-lg);
+		padding-top: var(--space-lg);
+		border-top: 1px solid var(--border-default);
 	}
 
 	.btn-primary,
 	.btn-secondary {
 		flex: 1;
-		padding: 0.75rem 1rem;
-		border-radius: 8px;
-		font-size: 0.875rem;
+		padding: var(--space-sm) var(--space-md);
+		border-radius: var(--radius-sm);
+		font-size: 14px;
 		font-weight: 500;
 		cursor: pointer;
-		transition: all 0.2s ease;
+		transition: background-color 0.1s ease;
 	}
 
 	.btn-primary {
@@ -308,7 +309,7 @@
 	}
 
 	.btn-primary:hover:not(:disabled) {
-		filter: brightness(1.1);
+		background: var(--accent-hover);
 	}
 
 	.btn-primary:disabled {
@@ -317,13 +318,12 @@
 	}
 
 	.btn-secondary {
-		background: transparent;
-		border: 1px solid var(--glass-border);
-		color: var(--text-secondary);
+		background: var(--bg-secondary);
+		border: 1px solid var(--border-default);
+		color: var(--text-primary);
 	}
 
 	.btn-secondary:hover {
-		background: hsla(0, 0%, 100%, 0.05);
-		color: var(--text-primary);
+		background: var(--bg-hover);
 	}
 </style>

@@ -89,19 +89,19 @@
 			<span class="count">{data.people.length} people</span>
 		</div>
 		<div class="header-actions">
-			<button type="button" class="btn-secondary" onclick={handleExport}>
+			<button type="button" class="btn btn-secondary" onclick={handleExport}>
 				Export JSON
 			</button>
-			<button type="button" class="btn-primary" onclick={openCreateForm}>
+			<button type="button" class="btn btn-primary" onclick={openCreateForm}>
 				+ Add Person
 			</button>
 		</div>
 	</header>
 
 	{#if data.people.length === 0}
-		<div class="empty-state glass-card">
+		<div class="empty-state">
 			<p>No people added yet.</p>
-			<button type="button" class="btn-primary" onclick={openCreateForm}>
+			<button type="button" class="btn btn-primary" onclick={openCreateForm}>
 				Add your first person
 			</button>
 		</div>
@@ -149,82 +149,51 @@
 <style>
 	.people-page {
 		max-width: 1200px;
+		margin: 0 auto;
+		padding: var(--space-lg);
 	}
 
 	.page-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-bottom: 1.5rem;
+		margin-bottom: var(--space-lg);
 		flex-wrap: wrap;
-		gap: 1rem;
+		gap: var(--space-md);
 	}
 
 	.header-left {
 		display: flex;
 		align-items: baseline;
-		gap: 1rem;
-	}
-
-	.header-left h1 {
-		margin: 0;
+		gap: var(--space-md);
 	}
 
 	.count {
 		color: var(--text-secondary);
-		font-size: 0.875rem;
+		font-size: 13px;
 	}
 
 	.header-actions {
 		display: flex;
-		gap: 0.75rem;
-	}
-
-	.btn-primary,
-	.btn-secondary {
-		padding: 0.625rem 1rem;
-		border-radius: 8px;
-		font-size: 0.875rem;
-		font-weight: 500;
-		cursor: pointer;
-		transition: all 0.2s ease;
-	}
-
-	.btn-primary {
-		background: var(--accent-primary);
-		border: none;
-		color: white;
-	}
-
-	.btn-primary:hover {
-		filter: brightness(1.1);
-	}
-
-	.btn-secondary {
-		background: transparent;
-		border: 1px solid var(--glass-border);
-		color: var(--text-secondary);
-	}
-
-	.btn-secondary:hover {
-		background: hsla(0, 0%, 100%, 0.05);
-		color: var(--text-primary);
+		gap: var(--space-sm);
 	}
 
 	.empty-state {
-		padding: 3rem;
+		padding: var(--space-xl);
 		text-align: center;
+		background: var(--bg-secondary);
+		border-radius: var(--radius-md);
 	}
 
 	.empty-state p {
 		color: var(--text-secondary);
-		margin-bottom: 1rem;
+		margin-bottom: var(--space-md);
 	}
 
 	.people-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-		gap: 1rem;
+		gap: var(--space-md);
 	}
 
 	.modal-overlay {
@@ -233,7 +202,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background: hsla(0, 0%, 0%, 0.6);
+		background: rgba(0, 0, 0, 0.4);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -241,23 +210,26 @@
 	}
 
 	.confirm-modal {
-		padding: 1.5rem;
+		background: var(--bg-primary);
+		border: 1px solid var(--border-default);
+		border-radius: var(--radius-md);
+		padding: var(--space-lg);
 		max-width: 400px;
 		text-align: center;
 	}
 
 	.confirm-modal h3 {
-		margin: 0 0 1rem;
+		margin-bottom: var(--space-md);
 	}
 
 	.confirm-modal p {
-		margin: 0 0 1.5rem;
+		margin-bottom: var(--space-lg);
 		color: var(--text-secondary);
 	}
 
 	.confirm-actions {
 		display: flex;
-		gap: 1rem;
+		gap: var(--space-sm);
 	}
 
 	.confirm-actions button {
@@ -265,18 +237,18 @@
 	}
 
 	.btn-danger {
-		padding: 0.625rem 1rem;
-		border-radius: 8px;
-		font-size: 0.875rem;
+		padding: var(--space-sm) var(--space-md);
+		border-radius: var(--radius-sm);
+		font-size: 14px;
 		font-weight: 500;
 		cursor: pointer;
-		background: hsl(0, 70%, 50%);
+		background: #e03e3e;
 		border: none;
 		color: white;
-		transition: all 0.2s ease;
+		transition: background-color 0.1s ease;
 	}
 
 	.btn-danger:hover {
-		background: hsl(0, 70%, 45%);
+		background: #c53030;
 	}
 </style>

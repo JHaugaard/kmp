@@ -22,7 +22,7 @@
 	);
 </script>
 
-<div class="person-card glass-card">
+<div class="person-card card">
 	<div class="card-header">
 		<div class="avatar" data-initial={surnameInitial}>
 			{surnameInitial}
@@ -72,39 +72,39 @@
 
 <style>
 	.person-card {
-		padding: 1.25rem;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: var(--space-md);
 	}
 
 	.card-header {
 		display: flex;
-		gap: 1rem;
+		gap: var(--space-md);
 		align-items: flex-start;
 	}
 
 	.avatar {
-		width: 48px;
-		height: 48px;
+		width: 40px;
+		height: 40px;
 		border-radius: 50%;
-		background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+		background: var(--accent-primary);
+		color: white;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-weight: 700;
-		font-size: 1.25rem;
+		font-weight: 600;
+		font-size: 14px;
 		flex-shrink: 0;
 	}
 
 	.name-section h3 {
 		margin: 0;
-		font-size: 1.125rem;
+		font-size: 15px;
 	}
 
 	.aliases {
-		font-size: 0.75rem;
-		color: var(--text-secondary);
+		font-size: 12px;
+		color: var(--text-tertiary);
 		font-style: italic;
 	}
 
@@ -115,86 +115,85 @@
 	.meta-row {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5rem;
-		margin-bottom: 0.75rem;
+		gap: var(--space-sm);
+		margin-bottom: var(--space-sm);
 	}
 
 	.badge {
-		padding: 0.25rem 0.5rem;
-		border-radius: 4px;
-		font-size: 0.75rem;
+		padding: 2px 6px;
+		border-radius: var(--radius-sm);
+		font-size: 11px;
 		font-weight: 500;
 	}
 
 	.badge.surname {
-		background: hsla(210, 100%, 60%, 0.2);
+		background: #e8f4fd;
 		color: var(--accent-primary);
 	}
 
 	.badge.generation {
-		background: hsla(280, 80%, 65%, 0.2);
-		color: var(--accent-secondary);
+		background: #f3e8ff;
+		color: #7c3aed;
 	}
 
 	.badge.years {
-		background: hsla(0, 0%, 100%, 0.1);
+		background: var(--bg-secondary);
 		color: var(--text-secondary);
 	}
 
 	.description {
 		margin: 0;
-		font-size: 0.875rem;
+		font-size: 13px;
 		color: var(--text-secondary);
 		line-height: 1.5;
 	}
 
 	.relationships {
-		margin-top: 0.75rem;
+		margin-top: var(--space-sm);
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5rem;
+		gap: var(--space-sm);
 	}
 
 	.relationship {
-		font-size: 0.75rem;
+		font-size: 12px;
 		color: var(--text-secondary);
 	}
 
 	.card-actions {
 		display: flex;
-		gap: 0.5rem;
-		border-top: 1px solid var(--border-subtle);
-		padding-top: 1rem;
+		gap: var(--space-sm);
+		border-top: 1px solid var(--border-light);
+		padding-top: var(--space-md);
 	}
 
 	.btn-edit,
 	.btn-delete {
 		flex: 1;
-		padding: 0.5rem;
-		border-radius: 6px;
-		font-size: 0.75rem;
+		padding: var(--space-sm);
+		border-radius: var(--radius-sm);
+		font-size: 12px;
 		cursor: pointer;
-		transition: all 0.2s ease;
+		transition: background-color 0.1s ease;
 	}
 
 	.btn-edit {
-		background: transparent;
-		border: 1px solid var(--glass-border);
-		color: var(--text-secondary);
+		background: var(--bg-secondary);
+		border: 1px solid var(--border-default);
+		color: var(--text-primary);
 	}
 
 	.btn-edit:hover {
-		background: hsla(0, 0%, 100%, 0.05);
-		color: var(--text-primary);
+		background: var(--bg-hover);
 	}
 
 	.btn-delete {
 		background: transparent;
-		border: 1px solid hsla(0, 70%, 50%, 0.3);
-		color: hsl(0, 70%, 60%);
+		border: 1px solid #fecaca;
+		color: #dc2626;
 	}
 
 	.btn-delete:hover {
-		background: hsla(0, 70%, 50%, 0.1);
+		background: #fef2f2;
 	}
 </style>

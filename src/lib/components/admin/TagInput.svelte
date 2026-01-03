@@ -89,22 +89,23 @@
 	.tags {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5rem;
-		padding: 0.5rem;
-		background: hsla(220, 15%, 15%, 0.5);
-		border: 1px solid var(--glass-border);
-		border-radius: 8px;
-		min-height: 42px;
+		gap: var(--space-sm);
+		padding: var(--space-sm);
+		background: var(--bg-primary);
+		border: 1px solid var(--border-default);
+		border-radius: var(--radius-sm);
+		min-height: 40px;
 	}
 
 	.tag {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.25rem;
-		padding: 0.25rem 0.5rem;
-		background: var(--accent-primary);
-		border-radius: 4px;
-		font-size: 0.875rem;
+		gap: 4px;
+		padding: 2px 8px;
+		background: #e8f4fd;
+		color: var(--accent-primary);
+		border-radius: var(--radius-sm);
+		font-size: 13px;
 	}
 
 	.tag-remove {
@@ -113,7 +114,7 @@
 		color: inherit;
 		cursor: pointer;
 		padding: 0;
-		font-size: 1rem;
+		font-size: 14px;
 		line-height: 1;
 		opacity: 0.7;
 	}
@@ -129,11 +130,11 @@
 		border: none;
 		color: var(--text-primary);
 		outline: none;
-		font-size: 0.875rem;
+		font-size: 14px;
 	}
 
 	.tag-input::placeholder {
-		color: var(--text-secondary);
+		color: var(--text-tertiary);
 	}
 
 	.suggestions {
@@ -141,30 +142,31 @@
 		top: 100%;
 		left: 0;
 		right: 0;
-		margin: 0.25rem 0 0;
+		margin: 4px 0 0;
 		padding: 0;
 		list-style: none;
-		background: var(--bg-secondary);
-		border: 1px solid var(--glass-border);
-		border-radius: 8px;
+		background: var(--bg-primary);
+		border: 1px solid var(--border-default);
+		border-radius: var(--radius-sm);
 		max-height: 200px;
 		overflow-y: auto;
 		z-index: 100;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 	}
 
 	.suggestions li button {
 		display: block;
 		width: 100%;
-		padding: 0.5rem 0.75rem;
+		padding: var(--space-sm) var(--space-md);
 		text-align: left;
 		background: none;
 		border: none;
 		color: var(--text-primary);
 		cursor: pointer;
-		font-size: 0.875rem;
+		font-size: 13px;
 	}
 
 	.suggestions li button:hover {
-		background: hsla(0, 0%, 100%, 0.1);
+		background: var(--bg-secondary);
 	}
 </style>

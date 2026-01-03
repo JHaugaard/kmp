@@ -46,7 +46,7 @@
 	}
 </script>
 
-<div class="panel glass-card">
+<div class="panel">
 	<div class="panel-header">
 		<h3>{photo.filename}</h3>
 		<button type="button" class="close-btn" onclick={onclose}>×</button>
@@ -125,8 +125,8 @@
 		bottom: 0;
 		width: 480px;
 		max-width: 100%;
-		border-radius: 0;
-		border-left: 1px solid var(--glass-border);
+		background: var(--bg-primary);
+		border-left: 1px solid var(--border-default);
 		display: flex;
 		flex-direction: column;
 		z-index: 1000;
@@ -137,13 +137,13 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1rem 1.5rem;
-		border-bottom: 1px solid var(--border-subtle);
+		padding: var(--space-md) var(--space-lg);
+		border-bottom: 1px solid var(--border-default);
 	}
 
 	.panel-header h3 {
 		margin: 0;
-		font-size: 1rem;
+		font-size: 14px;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -152,10 +152,10 @@
 	.close-btn {
 		background: none;
 		border: none;
-		color: var(--text-secondary);
+		color: var(--text-tertiary);
 		font-size: 1.5rem;
 		cursor: pointer;
-		padding: 0.25rem;
+		padding: 4px;
 		line-height: 1;
 	}
 
@@ -166,12 +166,12 @@
 	.panel-content {
 		flex: 1;
 		overflow-y: auto;
-		padding: 1.5rem;
+		padding: var(--space-lg);
 	}
 
 	.image-preview {
-		margin-bottom: 1.5rem;
-		border-radius: 8px;
+		margin-bottom: var(--space-lg);
+		border-radius: var(--radius-md);
 		overflow: hidden;
 		background: var(--bg-secondary);
 	}
@@ -183,31 +183,31 @@
 	}
 
 	.no-image {
-		padding: 3rem;
+		padding: var(--space-xl);
 		text-align: center;
-		color: var(--text-secondary);
+		color: var(--text-tertiary);
 	}
 
 	.field {
-		margin-bottom: 1rem;
+		margin-bottom: var(--space-md);
 	}
 
 	.field label {
 		display: block;
-		margin-bottom: 0.5rem;
-		font-size: 0.875rem;
+		margin-bottom: var(--space-sm);
+		font-size: 13px;
 		color: var(--text-secondary);
 	}
 
 	textarea {
 		width: 100%;
-		padding: 0.75rem;
-		background: hsla(220, 15%, 15%, 0.5);
-		border: 1px solid var(--glass-border);
-		border-radius: 8px;
+		padding: var(--space-sm) var(--space-md);
+		background: var(--bg-primary);
+		border: 1px solid var(--border-default);
+		border-radius: var(--radius-sm);
 		color: var(--text-primary);
 		font-family: inherit;
-		font-size: 0.875rem;
+		font-size: 14px;
 		resize: vertical;
 	}
 
@@ -219,25 +219,27 @@
 	.checkbox-field label {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--space-sm);
 		cursor: pointer;
+		font-size: 14px;
 	}
 
 	.checkbox-field input {
-		width: 18px;
-		height: 18px;
+		width: 16px;
+		height: 16px;
 		accent-color: var(--accent-primary);
 	}
 
 	.reviews-section {
-		margin-top: 1.5rem;
-		padding-top: 1.5rem;
-		border-top: 1px solid var(--border-subtle);
+		margin-top: var(--space-lg);
+		padding-top: var(--space-lg);
+		border-top: 1px solid var(--border-default);
 	}
 
 	.reviews-section h4 {
-		margin: 0 0 0.75rem;
-		font-size: 0.875rem;
+		margin: 0 0 var(--space-sm);
+		font-size: 13px;
+		color: var(--text-secondary);
 	}
 
 	.review-list {
@@ -249,10 +251,10 @@
 	.review-list li {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5rem;
-		padding: 0.5rem 0;
-		font-size: 0.75rem;
-		border-bottom: 1px solid var(--border-subtle);
+		gap: var(--space-sm);
+		padding: var(--space-sm) 0;
+		font-size: 12px;
+		border-bottom: 1px solid var(--border-light);
 	}
 
 	.review-reviewer {
@@ -260,34 +262,34 @@
 	}
 
 	.review-list time {
-		color: var(--text-secondary);
+		color: var(--text-tertiary);
 	}
 
 	.changes {
 		color: var(--accent-primary);
-		font-size: 0.625rem;
-		background: hsla(210, 100%, 60%, 0.1);
-		padding: 0.125rem 0.375rem;
-		border-radius: 4px;
+		font-size: 10px;
+		background: #e8f4fd;
+		padding: 1px 4px;
+		border-radius: var(--radius-sm);
 	}
 
 	.actions {
 		display: flex;
-		gap: 1rem;
-		margin-top: 1.5rem;
-		padding-top: 1.5rem;
-		border-top: 1px solid var(--border-subtle);
+		gap: var(--space-sm);
+		margin-top: var(--space-lg);
+		padding-top: var(--space-lg);
+		border-top: 1px solid var(--border-default);
 	}
 
 	.btn-primary,
 	.btn-secondary {
 		flex: 1;
-		padding: 0.75rem 1rem;
-		border-radius: 8px;
-		font-size: 0.875rem;
+		padding: var(--space-sm) var(--space-md);
+		border-radius: var(--radius-sm);
+		font-size: 14px;
 		font-weight: 500;
 		cursor: pointer;
-		transition: all 0.2s ease;
+		transition: background-color 0.1s ease;
 	}
 
 	.btn-primary {
@@ -297,7 +299,7 @@
 	}
 
 	.btn-primary:hover:not(:disabled) {
-		filter: brightness(1.1);
+		background: var(--accent-hover);
 	}
 
 	.btn-primary:disabled {
@@ -306,13 +308,12 @@
 	}
 
 	.btn-secondary {
-		background: transparent;
-		border: 1px solid var(--glass-border);
-		color: var(--text-secondary);
+		background: var(--bg-secondary);
+		border: 1px solid var(--border-default);
+		color: var(--text-primary);
 	}
 
 	.btn-secondary:hover {
-		background: hsla(0, 0%, 100%, 0.05);
-		color: var(--text-primary);
+		background: var(--bg-hover);
 	}
 </style>

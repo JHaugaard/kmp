@@ -159,44 +159,43 @@
 <style>
 	.photos-page {
 		max-width: 1400px;
+		margin: 0 auto;
+		padding: var(--space-lg);
 	}
 
 	.page-header {
 		display: flex;
 		align-items: baseline;
-		gap: 1rem;
-		margin-bottom: 1.5rem;
-	}
-
-	.page-header h1 {
-		margin: 0;
+		gap: var(--space-md);
+		margin-bottom: var(--space-lg);
 	}
 
 	.count {
 		color: var(--text-secondary);
-		font-size: 0.875rem;
+		font-size: 13px;
 	}
 
 	.filters {
 		display: flex;
-		gap: 0.5rem;
-		margin-bottom: 1.5rem;
+		gap: var(--space-sm);
+		margin-bottom: var(--space-lg);
 	}
 
 	.filter-btn {
-		padding: 0.5rem 1rem;
-		background: var(--glass-bg);
-		border: 1px solid var(--glass-border);
-		border-radius: 8px;
+		padding: var(--space-sm) var(--space-md);
+		background: var(--bg-primary);
+		border: 1px solid var(--border-default);
+		border-radius: var(--radius-sm);
 		color: var(--text-secondary);
 		text-decoration: none;
-		font-size: 0.875rem;
-		transition: all 0.2s ease;
+		font-size: 13px;
+		transition: background-color 0.1s ease;
 	}
 
 	.filter-btn:hover {
-		background: hsla(0, 0%, 100%, 0.1);
+		background: var(--bg-secondary);
 		color: var(--text-primary);
+		text-decoration: none;
 	}
 
 	.filter-btn.active {
@@ -208,30 +207,31 @@
 	.photo-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-		gap: 1rem;
+		gap: var(--space-md);
 	}
 
 	.pagination {
 		display: flex;
 		justify-content: center;
-		gap: 0.5rem;
-		margin-top: 2rem;
+		gap: var(--space-xs);
+		margin-top: var(--space-lg);
 	}
 
 	.page-btn {
-		padding: 0.5rem 1rem;
-		background: var(--glass-bg);
-		border: 1px solid var(--glass-border);
-		border-radius: 8px;
+		padding: var(--space-sm) var(--space-md);
+		background: var(--bg-primary);
+		border: 1px solid var(--border-default);
+		border-radius: var(--radius-sm);
 		color: var(--text-secondary);
 		text-decoration: none;
-		font-size: 0.875rem;
-		transition: all 0.2s ease;
+		font-size: 13px;
+		transition: background-color 0.1s ease;
 	}
 
 	.page-btn:hover {
-		background: hsla(0, 0%, 100%, 0.1);
+		background: var(--bg-secondary);
 		color: var(--text-primary);
+		text-decoration: none;
 	}
 
 	.page-btn.active {
@@ -241,8 +241,8 @@
 	}
 
 	.ellipsis {
-		padding: 0.5rem;
-		color: var(--text-secondary);
+		padding: var(--space-sm);
+		color: var(--text-tertiary);
 	}
 
 	.overlay {
@@ -251,7 +251,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background: hsla(0, 0%, 0%, 0.5);
+		background: rgba(0, 0, 0, 0.4);
 		z-index: 999;
 	}
 </style>
