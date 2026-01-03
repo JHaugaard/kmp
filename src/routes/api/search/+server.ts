@@ -1,11 +1,21 @@
 import { json } from '@sveltejs/kit';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GOOGLE_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import type { RequestHandler } from './$types';
 
-// Initialize once at module level
-const genAI = new GoogleGenerativeAI(GOOGLE_API_KEY);
-const embedModel = genAI.getGenerativeModel({ model: 'gemini-embedding-001' });
+// Lazy initialization for runtime env access
+let embedModel: ReturnType<GoogleGenerativeAI['getGenerativeModel']> | null = null;
+
+function getEmbedModel() {
+    if (!embedModel) {
+        if (!env.GOOGLE_API_KEY) {
+            throw new Error('GOOGLE_API_KEY not configured');
+        }
+        const genAI = new GoogleGenerativeAI(env.GOOGLE_API_KEY);
+        embedModel = genAI.getGenerativeModel({ model: 'gemini-embedding-001' });
+    }
+    return embedModel;
+}
 
 export const POST: RequestHandler = async ({ request, locals }) => {
     const { query } = await request.json();
@@ -16,7 +26,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 
     try {
         // 1. Embed the search query
-        const result = await embedModel.embedContent({
+        const result = await getEmbedModel().embedContent({
             content: { role: 'user', parts: [{ text: query }] },
             outputDimensionality: 768
         } as any);
