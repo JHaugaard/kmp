@@ -2,7 +2,7 @@
 	let { data } = $props();
 	
 	let searchQuery = $state('');
-	let results = $state([]);
+	let results = $state<Array<{ filename: string; score: number; assessment: string; keywords: string[] }>>([]);
 	let searching = $state(false);
 
 	async function handleSearch() {

@@ -5,7 +5,9 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			pb: import('pocketbase').default;
-			user: import('pocketbase').default['authStore']['record'];
+			user: (import('pocketbase').default['authStore']['record'] & {
+				role?: 'user' | 'reviewer' | 'admin';
+			}) | null;
 		}
 		// interface PageData {}
 		// interface PageState {}
@@ -13,4 +15,4 @@ declare global {
 	}
 }
 
-export { };
+export {};

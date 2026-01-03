@@ -4,7 +4,13 @@
       "Bash(ln:*)",
       "Bash(claude init:*)",
       "Bash(pre-commit install:*)",
-      "Bash(brew install:*)"
+      "Bash(brew install:*)",
+      "Bash(rm:*)",
+      "Bash(cat:*)",
+      "Bash(xargs ls:*)",
+      "Bash(ls:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run check:*)"
     ]
   }
 }

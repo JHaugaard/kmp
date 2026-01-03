@@ -17,7 +17,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
     // 4. Set locals for use in load functions and actions
     event.locals.pb = pb;
-    event.locals.user = pb.authStore.record;
+    event.locals.user = pb.authStore.model;
 
     const response = await resolve(event);
 
